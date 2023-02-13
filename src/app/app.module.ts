@@ -15,6 +15,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './signUp/login/login.component';
 import { RegisterComponent } from './signUp/register/register.component';
 import { AuthService } from './services/auth.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -26,7 +27,10 @@ import { AuthService } from './services/auth.service';
     NavbarModule,
     FooterModule,
     SidebarModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
+    // LoginComponent,
+    // RegisterComponent
   ],
   declarations: [
     AppComponent,

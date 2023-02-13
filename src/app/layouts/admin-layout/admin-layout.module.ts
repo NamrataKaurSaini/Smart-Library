@@ -27,6 +27,8 @@ import { LoginComponent } from 'app/signUp/login/login.component';
     ReactiveFormsModule,
     FormsModule,
     LbdModule,
+    // RegisterComponent,
+    // LoginComponent,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'})
   ],
   declarations: [

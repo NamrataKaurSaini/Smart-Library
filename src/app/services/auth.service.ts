@@ -88,8 +88,7 @@ export class AuthService {
 
     const unsubscribe = onSnapshot(queryRef, (values) => {
       if(values.docs.length === 0) {
-        // If user not found then there is no need snapshot 
-        // for viewing changes so we here unsubscribing the subscribe
+    
         unsubscribe();
       } else {
         this.userModel = { ...values.docs[0].data() as UserModel }
