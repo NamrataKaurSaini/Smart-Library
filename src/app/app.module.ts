@@ -8,12 +8,8 @@ import { AppRoutingModule } from './app.routing';
 import { NavbarModule } from './shared/navbar/navbar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { SidebarModule } from './sidebar/sidebar.module';
-
 import { AppComponent } from './app.component';
-
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { LoginComponent } from './signUp/login/login.component';
-import { RegisterComponent } from './signUp/register/register.component';
 import { AuthService } from './services/auth.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -29,8 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SidebarModule,
     AppRoutingModule,
     NgbModule
-    // LoginComponent,
-    // RegisterComponent
+    
   ],
   declarations: [
     AppComponent,

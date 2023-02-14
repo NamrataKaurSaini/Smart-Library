@@ -10,7 +10,7 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
 
 import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
-import { TablesComponent } from '../../tables/tables.component';
+import { TablesComponent } from '../../Member Plan/tables.component';
 import { TypographyComponent } from '../../typography/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
@@ -27,8 +27,6 @@ import { LoginComponent } from 'app/signUp/login/login.component';
     ReactiveFormsModule,
     FormsModule,
     LbdModule,
-    // RegisterComponent,
-    // LoginComponent,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'})
   ],
   declarations: [
