@@ -12,6 +12,13 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { AuthService } from './services/auth.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from 'environments/environment';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+
 
 @NgModule({
   imports: [
@@ -24,12 +31,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FooterModule,
     SidebarModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
     
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    AuthLayoutComponent,
     
   ],
   providers: [AuthService],

@@ -4,21 +4,172 @@
     <p class="lead">Try an Plan and get unrestricted access to all our products and features </p>
   </div>
 
+  <div class="container">
 
-  <div class="container py-5">
+    <div role="tabpanel" class="tab-pane">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-6 col-lg-4 mb-30">
+                <div class="price-item text-center">
+
+                    <div class="price-top">
+                        <h3>BASIC</h3>
+                        <h1 class="mb-0"><sup>₹</sup>99<span class="h3 ">/month</span></h1>
+                    </div>
+
+                    <div class="price-content">
+
+                        <ul class="list-unstyled my-5 text-small text-left">
+
+                            <li class="mb-3">
+                              <i class="fa fa-check mr-2 text-primary"></i> 5 Books per month </li>
+                
+                            <li class="mb-3">
+                              <i class="fa fa-check mr-2 text-primary"></i> Issue book for 7 Days </li>
+                
+                            <li class="mb-3 text-muted">
+                                <i class="fa fa-times mr-2"></i> <del> Download PDF </del></li>
+                
+                            <li class="mb-3 text-muted">
+                              <i class="fa fa-times mr-2"></i><del> Download EPUB </del></li>
+                
+                            <li class="mb-3 text-muted">
+                                <i class="fa fa-times mr-2 "></i> <del>Purchase book </del></li>
+                
+                            <li class="mb-3 text-muted">
+                                <i class="fa fa-times mr-2"></i><del> Unlimited Books </del></li>
+                
+                          </ul>&nbsp;
+
+                          <a href="#" class="btn btn-primary btn-block p-2 shadow rounded-pill">Subscribe</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6 col-lg-4 mb-30">
+                <div class="price-item text-center popular">
+
+                    <div class="price-top">
+                        <h3>PRO</h3>
+                        <h1 class="mb-0"><sup>₹</sup>299<span class="h3">/month</span></h1>
+                    </div>
+
+                    <div class="price-content">
+
+                        <ul class="list-unstyled my-5 text-small text-left font-weight-normal">
+
+                            <li class="mb-3">
+                              <i class="fa fa-check mr-2 text-primary"></i> 10 Books per month </li>
+                
+                            <li class="mb-3">
+                              <i class="fa fa-check mr-2 text-primary"></i> Issue book for 14 Days</li>
+                            
+                            <li class="mb-3">
+                                <i class="fa fa-check mr-2 text-primary"></i> Download PDF </li>
+                                
+                                <li class="mb-3">
+                                    <i class="fa fa-check mr-2 text-primary"></i> Download EPUB </li>
+                
+                            <li class="mb-3 text-muted ">
+                                    <i class="fa fa-times mr-2 "></i> <del> Purchase book </del></li>
+                
+                            <li class="mb-3 text-muted">
+                              <i class="fa fa-times mr-2 "></i> <del> Unlimited Books </del></li>
+                            
+                          </ul>&nbsp;
+
+                          <a href="#" class="btn btn-primary btn-block p-2 shadow rounded-pill" style="background-color: white;">Subscribe</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="col-md-6 col-lg-4 mb-30">
+                <div class="price-item text-center">
+
+                    <div class="price-top">
+                        <h3>PREMIUM</h3>
+                        <h1 class="mb-0"><sup>₹</sup>599<span class="h3 ">/month</span></h1>
+                    </div>
+
+                    <div class="price-content">
+                        <ul class="list-unstyled my-5 text-small text-left font-weight-normal">
+                            <li class="mb-3">
+                              <i class="fa fa-check mr-2 text-primary"></i>Unlimited Books per month</li>
+                            <li class="mb-3">
+                              <i class="fa fa-check mr-2 text-primary"></i> Issue book for Month </li>
+                            <li class="mb-3">
+                              <i class="fa fa-check mr-2 text-primary"></i> Download PDF </li>
+                            <li class="mb-3">
+                              <i class="fa fa-check mr-2 text-primary"></i> Download EPUB </li>
+                            <li class="mb-3">
+                              <i class="fa fa-check mr-2 text-primary"></i> Purchase book </li>
+                            <li class="mb-3">
+                              <i class="fa fa-check mr-2 text-primary"></i> Unlimited Books </li>
+                          </ul>&nbsp;
+
+                          <a href="#" class="btn btn-primary btn-block p-2 shadow rounded-pill">Subscribe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="card">
+
+                    <div class="header">
+                        <h4 class="title">Striped Table with Hover</h4>
+                        <p class="category">Here is a subtitle for this table</p>
+                    </div>
+                    
+                    <div class="content table-responsive table-full-width">
+                          <table class="table table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let row of tableData1.dataRows">
+                                        <td *ngFor="let cell of row">{{cell}}</td>
+                                    </tr>
+                                </tbody>
+                          </table>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+ 
+
+
+<!-- 
+<div class="container py-5">
 
    
     <div class="row text-center align-items-end">
 
-
-      <!-- Pricing Table-->
-    <!-- <div class="card">
-    <div class="card-body"> -->
-
       <div class="col-lg-4 mb-5 mb-lg-5">
         <div class="bg-blue p-5 rounded-lg shadow">
-          <h1 class="h6 text-uppercase font-weight-bold mb-4">Basic</h1>
-          <h2 class="h1 font-weight-bold">$100<span class="text-small font-weight-normal ml-2">/ month</span></h2>
+          <h1 class="h4 text-uppercase font-weight-bold mb-4">Basic</h1>
+          <h2 class="h2 font-weight-bold">$100<span class="h3 text-small font-weight-normal ml-2">/ month</span></h2>
 
           <div class="custom-separator my-4 mx-auto bg-primary"></div>
 
@@ -47,18 +198,10 @@
         </div>
       </div>
 
-    <!-- </div>
-  </div> -->
-      <!-- END -->
-
-
-      <!-- Pricing Table-->
-      <!-- <div class="card">
-        <div class="card-body"> -->
       <div class="col-lg-4 mb-5 mb-lg-0">
         <div class="bg-white p-5 rounded-lg shadow">
-          <h1 class="h6 text-uppercase font-weight-bold mb-4">Pro</h1>
-          <h2 class="h1 font-weight-bold">$300<span class="text-small font-weight-normal ml-2">/ month</span></h2>
+          <h1 class="h4 text-uppercase font-weight-bold mb-4">Pro</h1>
+          <h2 class="h2 font-weight-bold">$300<span class="h3 text-small font-weight-normal ml-2">/ month</span></h2>
 
           <div class="custom-separator my-4 mx-auto bg-primary"></div>
 
@@ -86,18 +229,11 @@
           <a href="#" class="btn btn-primary btn-block p-2 shadow rounded-pill">Subscribe</a>
         </div>
       </div>
-        <!-- </div>
-      </div> -->
-      <!-- END -->
-
-
-      <!-- Pricing Table-->
-      <!-- <div class="card">
-        <div class="card-body"> -->
+       
       <div class="col-lg-4">
         <div class="bg-white p-5 rounded-lg shadow">
-          <h1 class="h6 text-uppercase font-weight-bold mb-4">Enterprise</h1>
-          <h2 class="h1 font-weight-bold">$600<span class="text-small font-weight-normal ml-2">/ month</span></h2>
+          <h1 class="h4 text-uppercase font-weight-bold mb-4">Enterprise</h1>
+          <h2 class="h2 font-weight-bold">$600<span class="h3 text-small font-weight-normal ml-2">/ month</span></h2>
 
           <div class="custom-separator my-4 mx-auto bg-primary"></div>
 
@@ -118,313 +254,7 @@
           <a href="#" class="btn btn-primary btn-block p-2 shadow rounded-pill">Subscribe</a>
         </div>
       </div>
-        <!-- </div>
-      </div> -->
-      <!-- END -->
-
-      <!--DEMO-->
-      <!-- <div class="container">
-        <div class="card-deck mb-3 text-center">
-            <div class="card mb-4 box-shadow">
-                <div class="card-header">
-                    <h1 class="my-0 font-weight-normal">$600</h1>
-
-                    <div class="card-body">
-                        <h1>daghhgas</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-      </div> -->
-      <!--DEMO-END-->
 
     </div>
     
-  </div>
-
-
-
-<div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
-
-
-
-            <div class="col-md-5">
-                <div class="card">
-
-                    <div class="header">
-                        <h4 class="title">Striped Table with Hover</h4>
-                        <p class="category">Here is a subtitle for this table</p>
-                    </div>
-                    
-                    <div class="content table-responsive table-full-width">
-                          <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let row of tableData1.dataRows">
-                                        <td *ngFor="let cell of row">{{cell}}</td>
-                                    </tr>
-                                </tbody>
-                          </table>
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-</div>
-
-
- 
-
-<!-- <div class="container">
-    <div class="text-center">
-      
-
-    </div>
-    <div class="tab-content wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
-        <div role="tabpanel" class="tab-pane fade show active" id="yearly">
-            <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-4 mb-30">
-                    <div class="price-item text-center">
-                        <div class="price-top">
-                            <h4>Personal</h4>
-                            <h2 class="mb-0"><sup>$</sup>99</h2>
-                            <span class="text-capitalize">per year</span>
-                        </div>
-                        <div class="price-content">
-                            <ul class="border-bottom mb-30 mt-md-4 pb-3 text-left">
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Eget erovtiu faucid</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Cras justo odio</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Morbi leo risus</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span>Porta consectetur ac</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span> Vestibulum at eros</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span>Adipisci atque beatae</span>
-                                </li>
-                            </ul>
-                            <a href="#" class="btn btn-custom">Buy now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-30">
-                    <div class="price-item text-center popular">
-                        <div class="price-top">
-                            <h4>Business</h4>
-                            <h2 class="mb-0"><sup>$</sup>299</h2>
-                            <span class="text-capitalize">per year</span>
-                        </div>
-                        <div class="price-content">
-                            <ul class="border-bottom mb-30 mt-md-4 pb-3 text-left">
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Eget erovtiu faucid</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Cras justo odio</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Morbi leo risus</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span>Porta consectetur ac</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span> Vestibulum at eros</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span>Adipisci atque beatae</span>
-                                </li>
-                            </ul>
-                            <a href="#" class="btn btn-custom btn-light">Buy now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-30">
-                    <div class="price-item text-center">
-                        <div class="price-top">
-                            <h4>Enterprise</h4>
-                            <h2 class="mb-0"><sup>$</sup>399</h2>
-                            <span class="text-capitalize">per year</span>
-                        </div>
-                        <div class="price-content">
-                            <ul class="border-bottom mb-30 mt-md-4 pb-3 text-left">
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Eget erovtiu faucid</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Cras justo odio</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Morbi leo risus</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span>Porta consectetur ac</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span> Vestibulum at eros</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span>Adipisci atque beatae</span>
-                                </li>
-                            </ul>
-                            <a href="#" class="btn btn-custom">Buy now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div role="tabpanel" class="tab-pane fade" id="monthly">
-            <div class="row justify-content-center">
-                <div class="col-md-6 col-lg-4 mb-30">
-                    <div class="price-item text-center">
-                        <div class="price-top">
-                            <h4>Personal</h4>
-                            <h2 class="mb-0"><sup>$</sup>29</h2>
-                            <span class="text-capitalize">per month</span>
-                        </div>
-                        <div class="price-content">
-                            <ul class="border-bottom mb-30 mt-md-4 pb-3 text-left">
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Eget erovtiu faucid</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Cras justo odio</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Morbi leo risus</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span>Porta consectetur ac</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span> Vestibulum at eros</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span>Adipisci atque beatae</span>
-                                </li>
-                            </ul>
-                            <a href="#" class="btn btn-custom">Buy now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-30">
-                    <div class="price-item text-center popular">
-                        <div class="price-top">
-                            <h4>Business</h4>
-                            <h2 class="mb-0"><sup>$</sup>59</h2>
-                            <span class="text-capitalize">per month</span>
-                        </div>
-                        <div class="price-content">
-                            <ul class="border-bottom mb-30 mt-md-4 pb-3 text-left">
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Eget erovtiu faucid</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Cras justo odio</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Morbi leo risus</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span>Porta consectetur ac</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span> Vestibulum at eros</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span>Adipisci atque beatae</span>
-                                </li>
-                            </ul>
-                            <a href="#" class="btn btn-custom btn-light">Buy now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 mb-30">
-                    <div class="price-item text-center">
-                        <div class="price-top">
-                            <h4>Enterprise</h4>
-                            <h2 class="mb-0"><sup>$</sup>99</h2>
-                            <span class="text-capitalize">per month</span>
-                        </div>
-                        <div class="price-content">
-                            <ul class="border-bottom mb-30 mt-md-4 pb-3 text-left">
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Eget erovtiu faucid</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Cras justo odio</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-check mr-2"></i>
-                                    <span class="c-black">Morbi leo risus</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span>Porta consectetur ac</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span> Vestibulum at eros</span>
-                                </li>
-                                <li>
-                                    <i class="zmdi zmdi-close mr-2"></i>
-                                    <span>Adipisci atque beatae</span>
-                                </li>
-                            </ul>
-                            <a href="#" class="btn btn-custom">Buy now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
+  </div> -->

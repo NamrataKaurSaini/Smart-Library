@@ -27,10 +27,10 @@ export class AuthService {
   ) {
     onAuthStateChanged(auth, (user) => {
       if(user !== null) {
-        console.log(">>> User is already signed");
+        console.log(">>> User is signed in");
         this.fetchUserDetailsFromFirestore(user.uid);
       } else {
-        console.log(">>> User is not sign in");
+        console.log(">>> User is not signed in");
         this.userModel = null;
       }
     }, (error) => {

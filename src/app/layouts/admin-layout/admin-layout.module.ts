@@ -6,23 +6,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LbdModule } from '../../lbd/lbd.module';
 import { NguiMapModule} from '@ngui/map';
 
-import { AdminLayoutRoutes } from './admin-layout.routing';
+import { AdminLayoutRoutes,  } from './admin-layout.routing';
 
 import { HomeComponent } from '../../home/home.component';
 import { UserComponent } from '../../user/user.component';
 import { TablesComponent } from '../../Member Plan/tables.component';
-import { TypographyComponent } from '../../typography/typography.component';
+import { TypographyComponent } from '../../library/typography.component';
 import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { RegisterComponent } from 'app/signUp/register/register.component';
 import { LoginComponent } from 'app/signUp/login/login.component';
+import { AdminLayoutRoutingModule } from './admin-layout-routing.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    AdminLayoutRoutingModule,
     RouterModule.forChild(AdminLayoutRoutes),
     ReactiveFormsModule,
     FormsModule,
@@ -38,8 +40,8 @@ import { LoginComponent } from 'app/signUp/login/login.component';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    RegisterComponent,
-    LoginComponent
+    // RegisterComponent,
+    // LoginComponent
   ]
 })
 
