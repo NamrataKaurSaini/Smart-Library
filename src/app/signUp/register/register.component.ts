@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from 'app/services/auth.service';
+import { AuthService } from 'app/Service/services/auth.service';
 
 
 @Component({
@@ -28,13 +28,12 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(form: any): void {
-    // let formValues = { ...form.value };
     delete this.errorMsg;
     this.loader = true;
     let formValues: {  name: string; email: string; password: string } = Object.assign({}, form.value);
     this.authService.registerUser(formValues)
-      .then(() => this.loader = false)
-      .catch((error) => {
+       .then(() => this.loader = false)
+       .catch((error) => {
         this.loader = false;
         this.errorMsg = error;
         setTimeout(() => delete this.errorMsg, 5000)

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, UserCredential, onAuthStateChanged, User } from '@angular/fire/auth';
 import { Firestore, doc, collection, setDoc, query, where, Timestamp, onSnapshot } from '@angular/fire/firestore';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserModel } from '../models/user-model';
+import { UserModel } from '../../models/user-model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +37,9 @@ export class AuthService {
     }, (error) => {
       console.log(error);
     })
+
   }
+
 
   loginUser({ email, password }: { email: string; password: string }): Promise<UserCredential> {
     return new Promise((resolve, reject) => {
@@ -95,4 +98,7 @@ export class AuthService {
       }
     })
   }
+
+
+
 }

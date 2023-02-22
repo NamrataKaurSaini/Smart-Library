@@ -10,7 +10,7 @@ import { FooterModule } from './shared/footer/footer.module';
 import { SidebarModule } from './sidebar/sidebar.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { AuthService } from './services/auth.service';
+import { AuthService } from './Service/services/auth.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -18,6 +18,9 @@ import { environment } from 'environments/environment';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { EditPlanComponent } from './edit-plan/edit-plan.component';
+import { MemberService } from './memberService/member.service';
+
 
 
 @NgModule({
@@ -42,9 +45,11 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+    EditPlanComponent,
+  
     
   ],
-  providers: [AuthService],
+  providers: [ AuthService, MemberService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

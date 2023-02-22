@@ -1,10 +1,10 @@
-<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+<!-- <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
     <h1 class="display-4">Get Started Now,</h1>
     <p class="h1"> Pick a Plan to Start </p>
     <p class="lead">Try an Plan and get unrestricted access to all our products and features </p>
-  </div>
+  </div> -->
 
-  <div class="container">
+  <!-- <div class="container">
 
     <div role="tabpanel" class="tab-pane">
 
@@ -117,47 +117,221 @@
         </div>
     </div>
 
-</div>
+</div> -->
 
 
 
 <div class="main-content">
-    <div class="container-fluid">
-        <div class="row">
+<div class="container-fluid">
+<div class="row">
 
-            <div class="col-md-12">
-                <div class="card">
+<div class="col-md-10 col-md-offset-1">
+<div class="card">
 
-                    <div class="header">
-                        <h4 class="title">Striped Table with Hover</h4>
-                        <p class="category">Here is a subtitle for this table</p>
-                    </div>
-                    
-                    <div class="content table-responsive table-full-width">
-                          <table class="table table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let row of tableData1.dataRows">
-                                        <td *ngFor="let cell of row">{{cell}}</td>
-                                    </tr>
-                                </tbody>
-                          </table>
-                    </div>
+<div class="row">
 
-                </div>
-            </div>
+<div class="col-md-8 text-left">
+<div class="header">
+<h4 class="title">Membership Plan </h4>
+</div>
+</div>
+                        
+<div class="col-md-4 text-right">
+<div class="header">
+<a class="btn btn-black  btn-fill" style="background-color: black;" (click)="openModal()">Add Plan </a>
+</div>
+</div>
+</div>
 
+<div class="content table-responsive table-full-width">
+<table class="table table-hover table-striped">
+  <thead>
+   <tr>
+     <th *ngFor="let cell of tableData1.headerRow">{{ cell }}</th>
+     </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gold</td>
+      <td>30</td>
+      <td>92 Days</td>
+      <td>Rs.599</td>
+      <td>
+        <a class="btn btn-info btn-fill" (click)="openModal()">Edit</a>&nbsp;
+        <a href="#" class="btn btn-danger  btn-fill">Delete</a>
 
-        </div>
-    </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Gold</td>
+      <td>30</td>
+      <td>92 Days</td>
+      <td>Rs.599</td>
+      <td>
+        <a href="#" class="btn btn-info btn-fill">Edit</a>&nbsp;
+        <a href="#" class="btn btn-danger  btn-fill">Delete</a>
+
+      </td>
+    </tr>
+    <tr>
+      <td>Gold</td>
+      <td>30</td>
+      <td>92 Days</td>
+      <td>Rs.599</td>
+      <td>
+        <a href="#" class="btn btn-info  btn-fill">Edit</a>&nbsp;
+        <a href="#" class="btn btn-danger  btn-fill">Delete</a>
+
+      </td>
+    </tr>
+  </tbody>
+ </table>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 
- 
+<!-- Button trigger modal -->
+    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+               <div class="modal-content">
+                     <div class="modal-header">
+                           <h4 class="modal-title">Member Plan</h4>
+                           <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
+                         </div>
+                <div class="modal-body">
+                  <form [formGroup]="planForm" (ngSubmit)="saveUserInFirestore()" >
+                    
+                    <div class="form-group">
+                      <label for="plan" class="form-label">Plan</label>
+                      <input formControlName="plan" class="form-control" >
+
+                      <div *ngIf="planForm.get('plan')?.invalid && (planForm.get('plan')?.dirty || planForm.get('plan')?.touched)"
+                     class="text-sm text-danger">
+                    <div *ngIf="planForm.get('plan')!.hasError('required')">Field is required.</div>
+                    </div>
+              
+                    </div>
+                    <div class="form-group">
+                      <label for="bookIssueLimit" class="form-label">Book Issue Limit</label>
+                      <input formControlName="bookIssueLimit" class="form-control" >
+              
+                      <div *ngIf="planForm.get('bookIssueLimit')?.invalid && (planForm.get('bookIssueLimit')?.dirty || planForm.get('bookIssueLimit')?.touched)"
+                      class="text-sm text-danger">
+                     <div *ngIf="planForm.get('bookIssueLimit')!.hasError('required')">Field is required.</div>
+                     </div>
+
+                    </div>
+                    <div class="form-group">
+                      <label for="bookReturnPeriod" class="form-label">Book Return Period</label>
+                      <input formControlName="bookReturnPeriod" class="form-control" >
+                     
+                      <div *ngIf="planForm.get('bookReturnPeriod')?.invalid && (planForm.get('bookReturnPeriod')?.dirty || planForm.get('bookReturnPeriod')?.touched)"
+                     class="text-sm text-danger">
+                    <div *ngIf="planForm.get('bookReturnPeriod')!.hasError('required')">Field is required.</div>
+                    </div>
+
+                    </div>
+                    <div class="form-group">
+                      <label for="price" class="form-label">Price</label>
+                      <input formControlName="price" class="form-control">
+
+                      <div *ngIf="planForm.get('price')?.invalid && (planForm.get('price')?.dirty || planForm.get('price')?.touched)"
+                     class="text-sm text-danger">
+                    <div *ngIf="planForm.get('price')!.hasError('required')">Field is required.</div>
+                    </div>
+
+                    </div>
+                    <div class="form-group">
+                      <input type="submit" class="btn btn-primary" value="Submit">
+                    </div>
+                    <button type="button" id="cancel" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+                  </form>
+                         </div>
+
+                     <!-- <div class="modal-footer">
+                      <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                      </div>
+                           <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+                         </div> -->
+            </div>
+             </div>
+ </div>
+
+
+
+
+
+<div class="main-content" >
+  <div class="container-fluid">
+      <div class="row">
+          
+          <div class="col-md-8 col-md-offset-2">   
+              <div class="card">
+                  <div class="header">
+                      <h4 class="title">Member Plan</h4>
+                  </div>
+                  <div class="content">
+                    <form [formGroup]="planForm" (ngSubmit)="saveUserInFirestore()" >
+                    
+                      <div class="form-group">
+                        <label for="plan" class="form-label">Plan</label>
+                        <input formControlName="plan" class="form-control" >
+
+                        <div *ngIf="planForm.get('plan')?.invalid && (planForm.get('plan')?.dirty || planForm.get('plan')?.touched)"
+                       class="text-sm text-danger">
+                      <div *ngIf="planForm.get('plan')!.hasError('required')">Field is required.</div>
+                      </div>
+                
+                      </div>
+                      <div class="form-group">
+                        <label for="bookIssueLimit" class="form-label">Book Issue Limit</label>
+                        <input formControlName="bookIssueLimit" class="form-control" >
+                
+                        <div *ngIf="planForm.get('bookIssueLimit')?.invalid && (planForm.get('bookIssueLimit')?.dirty || planForm.get('bookIssueLimit')?.touched)"
+                        class="text-sm text-danger">
+                       <div *ngIf="planForm.get('bookIssueLimit')!.hasError('required')">Field is required.</div>
+                       </div>
+
+                      </div>
+                      <div class="form-group">
+                        <label for="bookReturnPeriod" class="form-label">Book Return Period</label>
+                        <input formControlName="bookReturnPeriod" class="form-control" >
+                       
+                        <div *ngIf="planForm.get('bookReturnPeriod')?.invalid && (planForm.get('bookReturnPeriod')?.dirty || planForm.get('bookReturnPeriod')?.touched)"
+                       class="text-sm text-danger">
+                      <div *ngIf="planForm.get('bookReturnPeriod')!.hasError('required')">Field is required.</div>
+                      </div>
+
+                      </div>
+                      <div class="form-group">
+                        <label for="price" class="form-label">Price</label>
+                        <input formControlName="price" class="form-control">
+
+                        <div *ngIf="planForm.get('price')?.invalid && (planForm.get('price')?.dirty || planForm.get('price')?.touched)"
+                       class="text-sm text-danger">
+                      <div *ngIf="planForm.get('price')!.hasError('required')">Field is required.</div>
+                      </div>
+
+                      </div>
+                      <div class="form-group">
+                        <input type="submit" class="btn btn-primary" value="Submit">
+                      </div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</div>
+
+  
+  
 
 
 <!-- 
@@ -258,3 +432,6 @@
     </div>
     
   </div> -->
+
+
+  

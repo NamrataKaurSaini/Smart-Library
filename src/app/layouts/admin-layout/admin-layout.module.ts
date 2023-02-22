@@ -16,8 +16,7 @@ import { IconsComponent } from '../../icons/icons.component';
 import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
-import { RegisterComponent } from 'app/signUp/register/register.component';
-import { LoginComponent } from 'app/signUp/login/login.component';
+
 import { AdminLayoutRoutingModule } from './admin-layout-routing.module';
 
 
@@ -40,8 +39,7 @@ import { AdminLayoutRoutingModule } from './admin-layout-routing.module';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    // RegisterComponent,
-    // LoginComponent
+
   ]
 })
 
