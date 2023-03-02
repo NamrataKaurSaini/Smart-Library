@@ -1,18 +1,14 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Firestore, doc, collection, setDoc, query, where, Timestamp, onSnapshot } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
-// import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Plans } from 'app/models/plan';
+import { Firestore } from '@angular/fire/firestore'
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemberService {
 
-  constructor(   private firestore: Firestore,
-                 private router: Router, 
-                //  private firebase: AngularFireDatabase 
-                 ) { }
+  constructor(    private afs: Firestore) {}
 
     form = new FormGroup({
     $key: new FormControl(null),
@@ -22,6 +18,21 @@ export class MemberService {
     price: new FormControl('',Validators.required)
   });
   
-  
+  addPlans(plan: Plans){
+      // plan.id = this.afs.createId()
+      // return this.afs.collection('plans').add(plan)
+  }
 
+  fetchPlans(){
+      // return this.afs.collection('plans').snapshotChanges()
+  }
+
+  deletePlans(plan:Plans){
+    // return this.afs.doc('plans'+plan.id).delete()
+  }
+
+  updatePlans(plans: Plans){
+    this.deletePlans(plans)
+    this.addPlans(plans)  
+  }
 }

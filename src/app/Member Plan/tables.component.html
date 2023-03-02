@@ -125,7 +125,7 @@
 <div class="container-fluid">
 <div class="row">
 
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-13" style="margin-left: 10px; margin-right: 10px;">
 <div class="card">
 
 <div class="row">
@@ -138,7 +138,7 @@
                         
 <div class="col-md-4 text-right">
 <div class="header">
-<a class="btn btn-black  btn-fill" style="background-color: black;" (click)="openModal()">Add Plan </a>
+<a class="btn btn-black  btn-fill" style="background-color: black;" (click)="addopenModal()" >Add Plan </a>
 </div>
 </div>
 </div>
@@ -157,8 +157,18 @@
       <td>92 Days</td>
       <td>Rs.599</td>
       <td>
-        <a class="btn btn-info btn-fill" (click)="openModal()">Edit</a>&nbsp;
-        <a href="#" class="btn btn-danger  btn-fill">Delete</a>
+        <a  class="glyphicon glyphicon-edit text-primary" (click)="editopenModal()"></a>&nbsp;
+        <a  class="glyphicon glyphicon-trash text-danger" (click)="deletePlans(planObj)"></a>
+      </td>
+    </tr>
+    <tr>
+      <td>Gold</td>
+      <td>30</td>
+      <td>92 Days</td>
+      <td>Rs.599</td>
+      <td>
+        <a  class="glyphicon glyphicon-edit text-primary" (click)="editopenModal()"></a>&nbsp;
+        <a  class="glyphicon glyphicon-trash text-danger"></a>
 
       </td>
     </tr>
@@ -168,19 +178,8 @@
       <td>92 Days</td>
       <td>Rs.599</td>
       <td>
-        <a href="#" class="btn btn-info btn-fill">Edit</a>&nbsp;
-        <a href="#" class="btn btn-danger  btn-fill">Delete</a>
-
-      </td>
-    </tr>
-    <tr>
-      <td>Gold</td>
-      <td>30</td>
-      <td>92 Days</td>
-      <td>Rs.599</td>
-      <td>
-        <a href="#" class="btn btn-info  btn-fill">Edit</a>&nbsp;
-        <a href="#" class="btn btn-danger  btn-fill">Delete</a>
+        <a  class="glyphicon glyphicon-edit text-primary" (click)="editopenModal()"></a>&nbsp;
+        <a  class="glyphicon glyphicon-trash text-danger"></a>
 
       </td>
     </tr>
@@ -194,79 +193,136 @@
 </div>
 
 
-<!-- Button trigger modal -->
-    <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
-         <div class="modal-dialog modal-dialog-centered" role="document">
-               <div class="modal-content">
-                     <div class="modal-header">
-                           <h4 class="modal-title">Member Plan</h4>
-                           <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span aria-hidden="true">&times;</span></button>
-                         </div>
-                <div class="modal-body">
-                  <form [formGroup]="planForm" (ngSubmit)="saveUserInFirestore()" >
-                    
-                    <div class="form-group">
-                      <label for="plan" class="form-label">Plan</label>
-                      <input formControlName="plan" class="form-control" >
+<!-- Button trigger modal Add-->
 
-                      <div *ngIf="planForm.get('plan')?.invalid && (planForm.get('plan')?.dirty || planForm.get('plan')?.touched)"
-                     class="text-sm text-danger">
-                    <div *ngIf="planForm.get('plan')!.hasError('required')">Field is required.</div>
-                    </div>
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':adddisplay}">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
               
-                    </div>
-                    <div class="form-group">
-                      <label for="bookIssueLimit" class="form-label">Book Issue Limit</label>
-                      <input formControlName="bookIssueLimit" class="form-control" >
-              
-                      <div *ngIf="planForm.get('bookIssueLimit')?.invalid && (planForm.get('bookIssueLimit')?.dirty || planForm.get('bookIssueLimit')?.touched)"
-                      class="text-sm text-danger">
-                     <div *ngIf="planForm.get('bookIssueLimit')!.hasError('required')">Field is required.</div>
-                     </div>
+         <div class="modal-body">
 
-                    </div>
-                    <div class="form-group">
-                      <label for="bookReturnPeriod" class="form-label">Book Return Period</label>
-                      <input formControlName="bookReturnPeriod" class="form-control" >
-                     
-                      <div *ngIf="planForm.get('bookReturnPeriod')?.invalid && (planForm.get('bookReturnPeriod')?.dirty || planForm.get('bookReturnPeriod')?.touched)"
-                     class="text-sm text-danger">
-                    <div *ngIf="planForm.get('bookReturnPeriod')!.hasError('required')">Field is required.</div>
-                    </div>
+           <div class="font-weight-bold">
+             <h4 class="h3 modal-title text-center ">Add Subscription Plan</h4>
+           </div>
 
-                    </div>
-                    <div class="form-group">
-                      <label for="price" class="form-label">Price</label>
-                      <input formControlName="price" class="form-control">
+           <form [formGroup]="planForm" (ngSubmit)="saveUserInFirestore()" >
 
-                      <div *ngIf="planForm.get('price')?.invalid && (planForm.get('price')?.dirty || planForm.get('price')?.touched)"
-                     class="text-sm text-danger">
-                    <div *ngIf="planForm.get('price')!.hasError('required')">Field is required.</div>
-                    </div>
+             <div class="form-group">
+               <label for="plan" class="form-label">Plan</label>
+               <input formControlName="plan" class="form-control" >
 
-                    </div>
-                    <div class="form-group">
-                      <input type="submit" class="btn btn-primary" value="Submit">
-                    </div>
-                    <button type="button" id="cancel" class="btn btn-default" (click)="onCloseHandled()">Close</button>
-                  </form>
-                         </div>
-
-                     <!-- <div class="modal-footer">
-                      <div class="form-group">
-                        <input type="submit" class="btn btn-primary" value="Submit">
-                      </div>
-                           <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
-                         </div> -->
-            </div>
+               <div *ngIf="planForm.get('plan')?.invalid && (planForm.get('plan')?.dirty || planForm.get('plan')?.touched)"
+              class="text-sm text-danger">
+             <div *ngIf="planForm.get('plan')!.hasError('required')">Field is required.</div>
              </div>
- </div>
+       
+             </div>
+             <div class="form-group">
+               <label for="bookIssueLimit" class="form-label">Book Issue Limit</label>
+               <input formControlName="bookIssueLimit" class="form-control" >
+       
+               <div *ngIf="planForm.get('bookIssueLimit')?.invalid && (planForm.get('bookIssueLimit')?.dirty || planForm.get('bookIssueLimit')?.touched)"
+               class="text-sm text-danger">
+              <div *ngIf="planForm.get('bookIssueLimit')!.hasError('required')">Field is required.</div>
+              </div>
+
+             </div>
+             <div class="form-group">
+               <label for="bookReturnPeriod" class="form-label">Book Return Period</label>
+               <input formControlName="bookReturnPeriod" class="form-control" >
+              
+               <div *ngIf="planForm.get('bookReturnPeriod')?.invalid && (planForm.get('bookReturnPeriod')?.dirty || planForm.get('bookReturnPeriod')?.touched)"
+              class="text-sm text-danger">
+             <div *ngIf="planForm.get('bookReturnPeriod')!.hasError('required')">Field is required.</div>
+             </div>
+             </div>
+
+             <div class="form-group">
+               <label for="price" class="form-label">Price</label>
+               <input formControlName="price" class="form-control">
+
+               <div *ngIf="planForm.get('price')?.invalid && (planForm.get('price')?.dirty || planForm.get('price')?.touched)"
+              class="text-sm text-danger">
+             <div *ngIf="planForm.get('price')!.hasError('required')">Field is required.</div>
+             </div>
+
+             </div>
+             <div class="form-group text-right">
+               <input type="submit" class="btn btn-info " value="Submit">&nbsp;
+               <button type="button" id="cancel" class="btn btn-danger " (click)="addonCloseHandled()">Close</button>
+             </div>
+           </form>
+                  </div>
+     </div>
+      </div>
+</div>
 
 
+<!-- Button trigger modal Edit-->
+<div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':editdisplay}">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+              
+         <div class="modal-body">
+
+           <div class="font-weight-bold">
+             <h4 class="h3 modal-title text-center ">Edit Subscription Plan</h4>
+           </div>
+
+           <form [formGroup]="planForm" (ngSubmit)="updatePlans()" >
+
+             <div class="form-group">
+               <label for="plan" class="form-label">Plan</label>
+               <input formControlName="plan" class="form-control" >
+
+               <div *ngIf="planForm.get('plan')?.invalid && (planForm.get('plan')?.dirty || planForm.get('plan')?.touched)"
+              class="text-sm text-danger">
+             <div *ngIf="planForm.get('plan')!.hasError('required')">Field is required.</div>
+             </div>
+       
+             </div>
+             <div class="form-group">
+               <label for="bookIssueLimit" class="form-label">Book Issue Limit</label>
+               <input formControlName="bookIssueLimit" class="form-control" >
+       
+               <div *ngIf="planForm.get('bookIssueLimit')?.invalid && (planForm.get('bookIssueLimit')?.dirty || planForm.get('bookIssueLimit')?.touched)"
+               class="text-sm text-danger">
+              <div *ngIf="planForm.get('bookIssueLimit')!.hasError('required')">Field is required.</div>
+              </div>
+
+             </div>
+             <div class="form-group">
+               <label for="bookReturnPeriod" class="form-label">Book Return Period</label>
+               <input formControlName="bookReturnPeriod" class="form-control" >
+              
+               <div *ngIf="planForm.get('bookReturnPeriod')?.invalid && (planForm.get('bookReturnPeriod')?.dirty || planForm.get('bookReturnPeriod')?.touched)"
+              class="text-sm text-danger">
+             <div *ngIf="planForm.get('bookReturnPeriod')!.hasError('required')">Field is required.</div>
+             </div>
+
+             </div>
+             <div class="form-group">
+               <label for="price" class="form-label">Price</label>
+               <input formControlName="price" class="form-control">
+
+               <div *ngIf="planForm.get('price')?.invalid && (planForm.get('price')?.dirty || planForm.get('price')?.touched)"
+              class="text-sm text-danger">
+             <div *ngIf="planForm.get('price')!.hasError('required')">Field is required.</div>
+             </div>
+
+             </div>
+             <div class="form-group text-right">
+               <input type="submit" class="btn btn-info " value="Submit">&nbsp;
+               <button type="button" id="cancel" class="btn btn-danger " (click)="editonCloseHandled()">Close</button>
+             </div>
+           </form>
+                  </div>
+     </div>
+      </div>
+</div>
 
 
-
-<div class="main-content" >
+<!-- <div class="main-content" >
   <div class="container-fluid">
       <div class="row">
           
@@ -328,7 +384,7 @@
 
       </div>
   </div>
-</div>
+</div> -->
 
   
   
