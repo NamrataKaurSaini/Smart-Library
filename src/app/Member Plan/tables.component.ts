@@ -22,12 +22,18 @@ declare interface TableData {
 })
 export class TablesComponent implements OnInit {
   public tableData1: TableData;
-  planForm: FormGroup
+  // planForm: FormGroup
   userData!: Observable<any>;
   addView = false;
   updateMode = false;
 
-
+   planForm = new FormGroup({
+    planId : new FormControl(),
+    plan : new FormControl(),
+    bookIssueLimit : new FormControl(),
+    bookReturnPeriod : new FormControl(),
+    price : new FormControl()
+  })
 
   // plansList: Plans[] = []
   // planObj: Plans = {
@@ -56,6 +62,8 @@ export class TablesComponent implements OnInit {
   this.getData();
  }
 
+ action: String = "";
+
 
   ngOnInit(): void {
 
@@ -63,7 +71,6 @@ export class TablesComponent implements OnInit {
       headerRow: ['PLAN', 'BOOK ISSUE LIMIT', 'BOOK RETURN PERIOD', 'PRICE', 'ACTION'],
       dataRows: []
     };
-
 
     this.planForm = this.fb.group
       ({
@@ -75,10 +82,25 @@ export class TablesComponent implements OnInit {
 
       })
 
+      if(this.action == "update") {
+        this.addView = true;
+        this.updateMode = true;
+        const sessionData = sessionStorage.getItem("plans");
+        this.updateData = JSON.parse(sessionData!);
+
+        this.planForm.patchValue(
+          {
+            plan: this.updateData.plan
+            // id: this.updateData.id
+            // bookIssueLimit: this.updateData.bookIssueLimit
+
+          }
+        );
+      }
 
   }
 
-  saveUserInFirestore() {
+  addData() {
     let value = { ...this.planForm.value };
     console.log(value);
 
@@ -116,14 +138,15 @@ export class TablesComponent implements OnInit {
 
   updateData(id: any) {
     this.planForm = new FormGroup({
+      planId : new FormControl(id.planId),
       plan : new FormControl(id.plan),
       bookIssueLimit : new FormControl(id.bookIssueLimit),
       bookReturnPeriod : new FormControl(id.bookReturnPeriod),
       price : new FormControl(id.price)
     })
    const docInstance = doc(this.firestore, 'plans', id);
-   const updataeData = this.planForm.value;
-   updateDoc(docInstance, updataeData)
+   const updateData = this.planForm.value;
+   updateDoc(docInstance, updateData)
    .then(() => {
      console.log('Data Update');
    })
