@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { collection, doc, Firestore, setDoc, updateDoc, deleteDoc } from '@angular/fire/firestore';
-import { MemberService } from 'app/memberService/member.service';
+// import { MemberService } from 'app/memberService/member.service';
+// import { Plans } from 'app/models/plan';
+import { Firestore, collection, addDoc, collectionData, doc, updateDoc, deleteDoc, setDoc   } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { Plans } from 'app/models/plan';
 
 
@@ -21,19 +23,25 @@ declare interface TableData {
 export class TablesComponent implements OnInit {
   public tableData1: TableData;
   planForm: FormGroup
-  plansList: Plans[] = []
-  planObj: Plans = {
-    id: '',
-    plan: '',
-    bookIssueLimit: '',
-    bookReturnPeriod: '',
-    price: ''
-  }
-  id: string = ''
-  plan: string = ''
-  bookIssueLimit: string = ''
-  bookReturnPeriod: string = ''
-  price: string = ''
+  userData!: Observable<any>;
+  addView = false;
+  updateMode = false;
+
+
+
+  // plansList: Plans[] = []
+  // planObj: Plans = {
+  //   id: '',
+  //   plan: '',
+  //   bookIssueLimit: '',
+  //   bookReturnPeriod: '',
+  //   price: ''
+  // }
+  // id: string = ''
+  // plan: string = ''
+  // bookIssueLimit: string = ''
+  // bookReturnPeriod: string = ''
+  // price: string = ''
 
 
   closeResult = '';
@@ -43,14 +51,11 @@ export class TablesComponent implements OnInit {
 
 
 
-  constructor(private fb: FormBuilder,
-    private firestore: Firestore,
-    private memberService: MemberService) {
+  constructor( private fb: FormBuilder,
+               private firestore: Firestore ) {     
+  this.getData();
+ }
 
-  }
-
-  submitted: boolean;
-  showSuccessMessage: boolean;
 
   ngOnInit(): void {
 
@@ -70,7 +75,6 @@ export class TablesComponent implements OnInit {
 
       })
 
-    this.getAllPlan()
 
   }
 
@@ -90,50 +94,52 @@ export class TablesComponent implements OnInit {
       })
   }
 
+  // addData(f:any){
+  //   const collectionInstance = collection(this.firestore,'plans');
+  //   addDoc(collectionInstance, f.value)
+  //   .then(() => {
+  //     console.log('Data Saved');
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   })
+  // }
 
-  addPlan() {
-    if (this.plan == '' || this.bookIssueLimit == '' || this.bookReturnPeriod == '' || this.price == '')
-      alert('Please provide complete input!')
-
-    this.planObj.id = ''
-    this.planObj.plan = this.plan
-    this.planObj.bookIssueLimit = this.bookIssueLimit
-    this.planObj.bookReturnPeriod = this.bookReturnPeriod
-    this.planObj.price = this.price
-
-    this.memberService.addPlans(this.planObj)
-
-    this.planForm.reset
+  getData() {
+    const collectionInstance = collection(this.firestore,'plans');
+    collectionData(collectionInstance, { idField: 'id' })
+    .subscribe(val => {
+    //  console.log(val);
+    })
+    this.userData = collectionData(collectionInstance, { idField: 'id' });
   }
 
-
-  getAllPlan() {
-    // this.memberService.fetchPlans().subscribe(res => {
-    //   this.plansList = res.map((e: any) => {
-    //     const data = e.payload.doc.data()
-    //     data.id = e.payload.doc.id;
-    //     return data
-    //   })
-    // }, err => {
-    //   alert('Eror while fetching plans list')
-    // })
+  updateData(id: any) {
+    this.planForm = new FormGroup({
+      plan : new FormControl(id.plan),
+      bookIssueLimit : new FormControl(id.bookIssueLimit),
+      bookReturnPeriod : new FormControl(id.bookReturnPeriod),
+      price : new FormControl(id.price)
+    })
+   const docInstance = doc(this.firestore, 'plans', id);
+   const updataeData = this.planForm.value;
+   updateDoc(docInstance, updataeData)
+   .then(() => {
+     console.log('Data Update');
+   })
+   .catch((err) => {
+     console.log(err);
+   })
   }
-
-  updatePlans() {
-    this.planObj.id = this.planForm.value.id
-    this.planObj.plan = this.planForm.value.plan
-    this.planObj.bookIssueLimit = this.planForm.value.bookIssueLimit
-    this.planObj.bookReturnPeriod = this.planForm.value.bookReturnPeriod
-    this.planObj.price = this.planForm.value.price
-
-    this.memberService.updatePlans(this.planObj)
+  
+  deleteData(id: string) {
+   const docInstance = doc(this.firestore, 'plans', id);
+   deleteDoc(docInstance)
+   .then(() => {
+     console.log('Data Deleted')
+   })
   }
-
-  deletePlans(plans: Plans) {
-    if (window.confirm('Are you sure you want to delete ' + plans.plan + '? '))
-      this.memberService.deletePlans(plans)
-  }
-
+ 
 
   editopenModal() {
     this.editdisplay = "block";
