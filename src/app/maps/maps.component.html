@@ -28,27 +28,13 @@
           </tr>
        </thead>
        <tbody>
-         <tr>   
+         <tr *ngFor = "let data of userData |async" >   
            <td>UserName</td>
-           <td>BookTittle</td>
-           <td>BookAuthor</td>
+           <td>{{data.title}}</td>
+           <td>{{data.author}}</td>
            <td>02-01-2023</td>
            <td>22-01-2023</td>
          </tr>
-         <tr>   
-            <td>UserName</td>
-            <td>BookTittle</td>
-            <td>BookAuthor</td>
-            <td>02-01-2023</td>
-            <td>22-01-2023</td>
-          </tr>
-          <tr>   
-            <td>UserName</td>
-            <td>BookTittle</td>
-            <td>BookAuthor</td>
-            <td>02-01-2023</td>
-            <td>22-01-2023</td>
-          </tr>
        </tbody>
       </table>
      </div>

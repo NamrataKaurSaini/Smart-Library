@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-// import { MemberService } from 'app/memberService/member.service';
-// import { Plans } from 'app/models/plan';
 import { Firestore, collection, addDoc, collectionData, doc, updateDoc, deleteDoc, setDoc   } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Plans } from 'app/models/plan';
@@ -82,21 +80,21 @@ export class TablesComponent implements OnInit {
 
       })
 
-      if(this.action == "update") {
-        this.addView = true;
-        this.updateMode = true;
-        const sessionData = sessionStorage.getItem("plans");
-        this.updateData = JSON.parse(sessionData!);
+      // if(this.action == "update") {
+      //   this.addView = true;
+      //   this.updateMode = true;
+      //   const sessionData = sessionStorage.getItem("plans");
+      //   this.updateData = JSON.parse(sessionData!);
 
-        this.planForm.patchValue(
-          {
-            plan: this.updateData.plan
-            // id: this.updateData.id
-            // bookIssueLimit: this.updateData.bookIssueLimit
+      //   this.planForm.patchValue(
+      //     {
+      //       plan: this.updateData.plan
+      //       // id: this.updateData.id
+      //       // bookIssueLimit: this.updateData.bookIssueLimit
 
-          }
-        );
-      }
+      //     }
+      //   );
+      // }
 
   }
 
@@ -109,7 +107,7 @@ export class TablesComponent implements OnInit {
       .then(() => {
         console.log("Saved");
         this.planForm.reset();
-
+         this.addonCloseHandled();
       }, (error) => {
         console.log(error);
 
@@ -126,6 +124,8 @@ export class TablesComponent implements OnInit {
   //     console.log(err);
   //   })
   // }
+
+ 
 
   getData() {
     const collectionInstance = collection(this.firestore,'plans');
@@ -163,9 +163,9 @@ export class TablesComponent implements OnInit {
    })
   }
  
-
-  editopenModal() {
+  editopenModal(plan: any = null) {
     this.editdisplay = "block";
+    this.initialisedPlanForm(plan)
   }
 
   editonCloseHandled() {
@@ -180,6 +180,25 @@ export class TablesComponent implements OnInit {
     this.adddisplay = "none";
   }
 
+  initialisedPlanForm(plan: any = null) {
+    if(plan === null) {
+      this.planForm = this.fb.group({
+        planId: [""],
+        plan: [""],
+        bookIssueLimit: [""],
+        bookReturnPeriod: [""],
+        price: [""]
+      })
+    } else {
+      this.planForm = this.fb.group({
+        planId: [plan.planId],
+        plan: [plan.plan],
+        bookIssueLimit: [plan.bookIssueLimit],
+        bookReturnPeriod: [plan.bookReturnPeriod],
+        price: [plan.price]
+      })
+    }
 
+  }
 
 }

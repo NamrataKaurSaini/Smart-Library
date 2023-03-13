@@ -58,34 +58,16 @@
           </tr>
        </thead>
        <tbody>
-         <tr>
-           
-           <td>Title</td>
-           <td>Author</td>
-           <td>tag</td>
+         <tr *ngFor = "let data of userData |async" >
+           <td>{{data.title}}</td>
+           <td>{{data.author}}</td>
+           <td><span class="badge">{{data.tags}}</span></td>
            <td>02-04-2023</td>
            <td>
-            <a href="" class="btn btn-danger btn-xs "> RE-ISSUE </a>
+            <a href="" class="btn btn-danger btn-xs "> RE-ISSUE </a>&nbsp;
+            <a  class="glyphicon glyphicon-trash text-danger" (click)="deleteData(data.id)"></a>
            </td>
          </tr>
-         <tr>
-            <td>Title</td>
-            <td>Author</td>
-            <td>tag</td>
-            <td>02-04-2023</td>
-            <td>
-             <a href="" class="btn btn-danger btn-xs "> RE-ISSUE </a>
-            </td>
-        </tr>
-        <tr>
-            <td>Title</td>
-            <td>Author</td>
-            <td>tag</td>
-            <td>02-04-2023</td>
-            <td>
-             <a href="" class="btn btn-danger btn-xs "> RE-ISSUE </a>
-            </td>
-        </tr>
        </tbody>
       </table>
      </div>

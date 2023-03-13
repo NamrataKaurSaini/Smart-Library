@@ -29,29 +29,11 @@
          </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Gold</td>
-          <td>30</td>
-          <td>92 Days</td>
-          <td>Rs.599</td>
-          <td>
-            <a href="" class="btn btn-danger btn-xs "> BUY </a>
-           </td>
-        </tr>
-        <tr>
-          <td>Gold</td>
-          <td>30</td>
-          <td>92 Days</td>
-          <td>Rs.599</td>
-          <td>
-            <a href="" class="btn btn-danger btn-xs "> BUY </a>
-           </td>
-        </tr>
-        <tr>
-          <td>Gold</td>
-          <td>30</td>
-          <td>92 Days</td>
-          <td>Rs.599</td>
+        <tr *ngFor = "let data of userData |async">
+          <td>{{ data.plan }}</td>
+          <td>{{ data.bookIssueLimit }}</td>
+          <td>{{ data.bookReturnPeriod }}</td>
+          <td>{{ data.price}}</td>
           <td>
             <a href="" class="btn btn-danger btn-xs "> BUY </a>
            </td>

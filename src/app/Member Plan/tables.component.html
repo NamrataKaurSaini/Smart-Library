@@ -152,12 +152,12 @@
   </thead>
   <tbody>
     <tr *ngFor = "let data of userData |async">
-      <td>{{ data.plan}}</td>
-      <td>{{ data.bookIssueLimit}}</td>
-      <td>{{ data.bookReturnPeriod}}</td>
+      <td>{{ data.plan }}</td>
+      <td>{{ data.bookIssueLimit }}</td>
+      <td>{{ data.bookReturnPeriod }}</td>
       <td>{{ data.price}}</td>
       <td>
-        <a  class="glyphicon glyphicon-edit text-primary" (click)="editopenModal()"></a>&nbsp;
+        <a  class="glyphicon glyphicon-edit text-primary" (click)="editopenModal(data)"></a>&nbsp;
         <a  class="glyphicon glyphicon-trash text-danger" (click)="deleteData(data.id)"></a>
       </td>
     </tr>

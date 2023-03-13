@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Firestore } from 'firebase/firestore';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { collection, doc, Firestore, setDoc, updateDoc, deleteDoc, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 declare interface TableData {
 	headerRow: string[];
@@ -17,8 +18,14 @@ declare interface TableData {
 
 export class MapsComponent implements OnInit {
 	public tableData1: TableData;
+	userData!: Observable<any>;
 
-  constructor( private modalService: NgbModal ) { }
+	constructor( private modalService: NgbModal ,
+		private fb : FormBuilder,
+		private firestore: Firestore, 
+		private route: ActivatedRoute, )
+		
+		 { this.getData(); }
 
   ngOnInit() { 
 
@@ -28,6 +35,15 @@ export class MapsComponent implements OnInit {
 		]
 	};
 
+  }
+
+  getData() {
+    const collectionInstance = collection(this.firestore,'issued');
+    collectionData(collectionInstance, { idField: 'id' })
+    .subscribe(val => {
+    //  console.log(val);
+    })
+    this.userData = collectionData(collectionInstance, { idField: 'id' });
   }
 
 }

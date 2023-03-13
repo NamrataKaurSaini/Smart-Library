@@ -97,46 +97,18 @@
         </tr>
      </thead>
      <tbody>
-       <tr>
-         
-         <td>Title</td>
-         <td>Author</td>
-         <td>tag</td>
-         <td>Rs.599</td>
-         <td>isbn</td>
-         <td>available</td>
-         <td>issued</td>
+       <tr *ngFor = "let data of userData |async" >
+         <td>{{data.title}}</td>
+         <td>{{data.author}}</td>
+         <td><span class="badge">{{ data.tags}}</span></td> 
+         <td>{{data.price}}</td>
+         <td>{{data.isbn}}</td>
+         <td>{{data.quantity}}</td>
          <td>
           <a  class="glyphicon glyphicon-edit text-primary" (click)="editopenModal1()"></a>&nbsp;
-          <a  class="glyphicon glyphicon-trash text-danger"></a>
+          <a  class="glyphicon glyphicon-trash text-danger" (click)="deleteData(data.id)"></a>
          </td>
        </tr>
-       <tr>
-        <td>Title</td>
-        <td>Author</td>
-        <td>tag</td>
-        <td>Rs.599</td>
-        <td>isbn</td>
-        <td>available</td>
-        <td>issued</td>
-        <td>
-         <a  class="glyphicon glyphicon-edit text-primary"></a>&nbsp;
-         <a  class="glyphicon glyphicon-trash text-danger"></a>
-        </td>
-      </tr>
-      <tr>
-        <td>Title</td>
-        <td>Author</td>
-        <td>tag</td>
-        <td>Rs.599</td>
-        <td>isbn</td>
-        <td>available</td>
-        <td>issued</td>
-        <td>
-         <a  class="glyphicon glyphicon-edit text-primary"></a>&nbsp;
-         <a  class="glyphicon glyphicon-trash text-danger"></a>
-        </td>
-      </tr>
      </tbody>
     </table>
    </div>
@@ -170,12 +142,11 @@
                               <input type="text" class="form-control" id="author" formControlName="author"></div>
                           </div>
                        </div>
-                       <!-- <div class="form-group mb-3">
-                        <label class="control-label" for="file">Cover Image</label>
-                        <input type="file" class="inputFile" id="file" (change)="upload($event)" accept="*.png.jpg."
-                        formControlName="file" placeholder="Choose Image File"> 
-                       <button type="button" click="uploadimage()"> Upload</button>
-                       </div> -->
+                       <div class="form-group mb-3">
+                        <label class="control-label" for="image">Cover Image</label>
+                          <input type="file" class="inputFile" id="image" formControlName="coverimage" (change)="pickFile($event)" accept="image/png, image/jpeg">
+                          <!-- <label class="custom-file-label" for="image">Choose cover image</label> -->
+                        </div> 
                         <div class="form-group mb-3">
                         <div class="row">
                          <div class="col-md-4">
@@ -214,7 +185,7 @@
                       <div class="font-weight-bold">
                         <h4 class="h3 modal-title text-center ">Edit Book</h4>
                       </div>
-                        <form [formGroup]="addbookform" (ngSubmit)="savedataInFirestore()"> 
+                        <form [formGroup]="addbookform" > 
   
                           <div class="form-group mb-3">
                              <div class="row">
